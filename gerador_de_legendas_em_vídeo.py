@@ -8,7 +8,7 @@ from tkinter import filedialog, messagebox
 
 # Funções de processamento
 def extract_audio(video_path, audio_path):
-    command = f"ffmpeg -i {video_path} -q:a 0 -map a {audio_path}"
+    command = f"ffmpeg -i \"{video_path}\" -q:a 0 -map a \"{audio_path}\""
     subprocess.call(command, shell=True)
 
 def transcribe_audio(audio_path):
@@ -29,7 +29,7 @@ def create_srt(transcription, output_srt):
             f.write(line + "\n\n")
 
 def add_subtitles(video_path, srt_path, output_path):
-    command = f"ffmpeg -i {video_path} -vf subtitles={srt_path} {output_path}"
+    command = f"ffmpeg -i \"{video_path}\" -vf subtitles=\"{srt_path}\" \"{output_path}\""
     subprocess.call(command, shell=True)
 
 # Funções da interface gráfica
